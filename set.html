@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Il Set - Blue-Eyes Fan Box</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Stato attivo per la navbar */
+        .nav-links li a.active {
+            color: var(--primary-color);
+            text-shadow: 0 0 8px var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            text-decoration: underline;
+        }
+
+        .product-details {
+            padding: 0 20px 25px;
+            text-align: center;
+        }
+
+        .price {
+            display: block;
+            font-size: 1.6rem;
+            color: var(--secondary-color);
+            font-family: var(--font-heading);
+            margin: 15px 0;
+            font-weight: bold;
+        }
+
+        .description {
+            font-size: 0.95rem;
+            color: #b0b8c1;
+            margin-bottom: 20px;
+            min-height: 60px;
+        }
+
+        .btn-buy {
+            background: transparent;
+            border: 2px solid black;
+            color: black;
+            padding: 12px 35px;
+            font-weight: bold;
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .btn-buy:hover {
+            background: black;
+            color: white;
+            box-shadow: 0 0 20px black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo"><img src="/Assets/Immagini/Logo.png" alt="Blue-Eyes Logo"></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="set.html" class="active">Il Set</a></li>
+            <li><a href="info.html">Info sul sito</a></li>
+        </ul>
+        <a href="carrello.html" class="cart-icon">🛒</a>
+    </nav>
+
+    <main>
+        <section class="main-content">
+            <h2 style="text-align: center; margin-bottom: 50px; color: var(--primary-color);">Dettagli Collezione</h2>
+            
+            <div class="cards-container">
+                <div class="card">
+                    <div class="crop-container">
+                        <img src="/Assets/Immagini/card_1.png" alt="Tappetino da gioco">
+                    </div>
+                    <h3>TAPPETINO DA GIOCO</h3>
+                    <div class="product-details">
+                        <p class="description">Superficie in microfibra ad alta precisione con base in gomma naturale per duelli senza interruzioni.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="crop-container">
+                        <img src="/Assets/Immagini/card_2.png" alt="Statua da collezione">
+                    </div>
+                    <h3>STATUA DA COLLEZIONE</h3>
+                    <div class="product-details">
+                        <p class="description">Riproduzione fedele in resina del Drago Bianco Occhi Blu con finitura perlata e dettagli incisi.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="crop-container">
+                        <img src="/Assets/Immagini/card_3.png" alt="Carte Esclusive">
+                    </div>
+                    <h3>CARTE ESCLUSIVE</h3>
+                    <div class="product-details">
+                        <p class="description">Include Deck da 55 carte, di cui 40 di main e 15 di Extra Deck anch'esso compreso.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="banner-promo">
+                <img src="/Assets/Immagini/il-set.png" alt="Il Set Completo" class="full-promo" loading="lazy">
+                <div class="overlay-text">
+                    <p style="font-size: 1.5rem; color: black; margin-bottom: 10px; font-weight: bold;">A soli 150€</p>
+                    <button class="btn-buy" onclick="addToCart()">ACQUISTA ORA</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Konami / ITS Design Jobs Academy</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

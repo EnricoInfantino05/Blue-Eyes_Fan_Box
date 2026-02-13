@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info sul Sito - Blue-Eyes Fan Box</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Sottolineatura e colore fisso per la pagina attiva nella navbar */
+        .nav-links li a.active {
+            color: var(--primary-color) !important;
+            text-shadow: 0 0 8px var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            text-decoration: underline !important;
+        }
+
+        .info-wrapper {
+            max-width: 900px;
+            margin: 100px auto;
+            padding: 40px;
+            background: var(--card-bg);
+            border: 1px solid rgba(94, 197, 217, 0.3);
+            border-radius: 20px;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        .creator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .creator-card {
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid #333;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .creator-card:hover {
+            border-color: var(--primary-color);
+        }
+
+        .github-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .github-icon {
+            width: 30px;
+            height: auto;
+            /* Animazione rimossa come richiesto */
+        }
+
+        .role-label {
+            color: var(--primary-color);
+            font-family: var(--font-heading);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo"><img src="/Assets/Immagini/Logo.png" alt="Blue-Eyes Logo"></div>
+        <ul class="nav-links">
+            <li><a href="Flexbox.html">Home</a></li>
+            <li><a href="set.html">Il Set</a></li>
+            <li><a href="info.html" class="active">Info sul sito</a></li>
+        </ul>
+        <a href="carrello.html" class="cart-icon" style="text-decoration: none;">🛒</a>
+    </nav>
+
+    <main>
+        <div class="info-wrapper">
+            <h1 style="color: var(--primary-color); margin-bottom: 20px;">Info sul Sito</h1>
+            <p>Eccellenza, Design e Passione: i pilastri dietro il progetto Blue-Eyes Fan Box.</p>
+
+            <div class="creator-grid">
+                <div class="creator-card">
+                    <span class="role-label">BRAND CREATOR & DEV</span>
+                    <h2>Luca Bonfiglio</h2>
+                    <a href="https://github.com/cyber-luca" class="github-link">
+                        <span>Seguimi su:</span>
+                        <img src="/Assets/Immagini/Github.png" alt="GitHub" class="github-icon">
+                    </a>
+                </div>
+
+                <div class="creator-card">
+                    <span class="role-label">BRAND CREATOR & DEV</span>
+                    <h2>Enrico Infantino</h2>
+                    <a href="https://github.com/EnricoInfantino05" class="github-link">
+                        <span>Seguimi su:</span>
+                        <img src="/Assets/Immagini/Github.png" alt="GitHub" class="github-icon">
+                    </a>
+                </div>
+            </div>
+
+            <div style="margin-top: 60px; color: #555; font-size: 0.85rem; border-top: 1px solid #222; padding-top: 20px;">
+                <p>Sviluppato per il corso di IA Generativa | ITS Design Jobs Academy</p>
+                <p>&copy; 2026 Progetto Blue-Eyes Fan Box</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Konami / ITS Design Jobs Academy</p>
+    </footer>
+
+</body>
+
+</html>

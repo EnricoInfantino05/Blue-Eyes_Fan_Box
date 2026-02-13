@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Blue-Eyes Fan Box - Il set definitivo per i collezionisti di Yu-Gi-Oh! Include tappetino, statua e carte esclusive.">
+    <title>Blue-Eyes Fan Box</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        .nav-links li a.active {
+            color: var(--primary-color);
+            text-shadow: 0 0 8px var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo"><img src="/Assets/Immagini/Logo.png" alt="Blue-Eyes Logo"></div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="set.html">Il Set</a></li>
+            <li><a href="info.html">Info sul sito</a></li>
+        </ul>
+        <a href="carrello.html" class="cart-icon">🛒</a>
+    </nav>
+
+    <header class="hero-section">
+        <img src="/Assets/Immagini/hero.png" alt="Blue-Eyes Hero" class="hero-bg">
+        <div class="hero-content">
+            <h1>Blue-Eyes fan Box</h1>
+            <p>La collezione definitiva per i veri duellanti</p>
+            <a href="set.html" class="cta-button">Scopri di più</a>
+        </div>
+    </header>
+     <br> <br>
+    <main>
+        
+            <h2 class="trailer">Guarda il Trailer ufficiale</h2>
+            <br>
+            <div class="video-container">
+                <video id="trailerVideo" poster="/Immagini/thumb.jpg">
+                    <source src="/Assets/Video/Blue-Eyes_Fan_Box_trailer.mp4" type="video/mp4">
+                   
+                </video>
+                <button class="play-btn" id="playBtn">▶</button>
+                <div class="video-controls">
+                    <button id="playPauseBtn">▶</button>
+                    <input type="range" id="progressBar" min="0" max="100" value="0">
+                    <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
+                    <button id="fullscreenBtn">⛶</button>
+                </div>
+            </div>
+            <br> <br>
+    
+
+        <section class="main-content" id="product">
+            <div class="banner-promo">
+                <img src="/Assets/Immagini/Descrizione-prodotto.png" alt="Set Completo" class="full-promo" loading="lazy">
+                <div class="overlay-text">
+                    <h2>L'ARMONIA PERFETTA <br> TRA GIOCO E ARTE</h2>
+                    <p>Il set all-in-one definitivo per il fan del Drago Bianco</p>
+                    <button class="btn-buy" onclick="addToCart()">ACQUISTA ORA</button>
+                </div>
+            </div>
+
+            <div class="cards-container" id="set">
+                <div class="card">
+                    <div class="crop-container"><img src="/Assets/Immagini/card_1.png" class="crop-1" loading="lazy"
+                            alt="Tappetino da gioco"></div>
+                    <h3>TAPPETINO DA GIOCO</h3>
+                </div>
+                <div class="card">
+                    <div class="crop-container"><img src="/Assets/Immagini/card_2.png" class="crop-2" loading="lazy"
+                            alt="Statua da collezione"></div>
+                    <h3>STATUA DA COLLEZIONE</h3>
+                </div>
+                <div class="card">
+                    <div class="crop-container"><img src="/Assets/Immagini/card_3.png" class="crop-3" loading="lazy"
+                            alt="Carte Esclusive"></div>
+                    <h3>CARTE ESCLUSIVE</h3>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Image Modal Overlay -->
+    <div class="image-modal" id="imageModal">
+        <div class="image-modal-content">
+            <img id="modalImage" src="" alt="Immagine ingrandita">
+            <button class="image-modal-close" id="modalClose">&times;</button>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Konami / ITS Design Jobs Academy</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const playBtn = document.getElementById('playBtn');
+            const playPauseBtn = document.getElementById('playPauseBtn');
+            const progressBar = document.getElementById('progressBar');
+            const currentTimeSpan = document.getElementById('currentTime');
+            const durationSpan = document.getElementById('duration');
+            const fullscreenBtn = document.getElementById('fullscreenBtn');
+            const video = document.getElementById('trailerVideo');
+            const videoContainer = document.querySelector('.video-container');
+
+            // Initial play button
+            playBtn.addEventListener('click', function() {
+                video.play();
+                playBtn.style.display = 'none';
+                playPauseBtn.textContent = '⏸';
+            });
+
+            // Play/Pause button
+            playPauseBtn.addEventListener('click', function() {
+                if (video.paused) {
+                    video.play();
+                    playPauseBtn.textContent = '⏸';
+                    playBtn.style.display = 'none';
+                } else {
+                    video.pause();
+                    playPauseBtn.textContent = '▶';
+                    playBtn.style.display = 'flex';
+                }
+            });
+
+            // Progress bar
+            video.addEventListener('timeupdate', function() {
+                const progress = (video.currentTime / video.duration) * 100;
+                progressBar.value = progress;
+                currentTimeSpan.textContent = formatTime(video.currentTime);
+            });
+
+            progressBar.addEventListener('input', function() {
+                const time = (progressBar.value / 100) * video.duration;
+                video.currentTime = time;
+            });
+
+            video.addEventListener('loadedmetadata', function() {
+                durationSpan.textContent = formatTime(video.duration);
+            });
+
+            video.addEventListener('play', function() {
+                playBtn.style.display = 'none';
+                playPauseBtn.textContent = '⏸';
+            });
+
+            video.addEventListener('pause', function() {
+                playBtn.style.display = 'flex';
+                playPauseBtn.textContent = '▶';
+            });
+
+            video.addEventListener('ended', function() {
+                playBtn.style.display = 'flex';
+                playPauseBtn.textContent = '▶';
+            });
+
+            // Fullscreen
+            fullscreenBtn.addEventListener('click', function() {
+                if (videoContainer.requestFullscreen) {
+                    videoContainer.requestFullscreen();
+                }
+            });
+
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs.toString().padStart(2, '0')}`;
+            }
+        });
+    </script>
+</body>
+
+</html>
